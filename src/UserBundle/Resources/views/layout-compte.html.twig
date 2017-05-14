@@ -1,0 +1,8 @@
+{% extends "base.html.twig" %}
+{% block superCont %}
+	<div class="cont-profile">
+	{% block cont %}
+		{% block fos_user_content %}{% endblock %}
+	{%endblock%}
+	</div>
+{% endblock %}

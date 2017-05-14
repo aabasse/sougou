@@ -1,0 +1,13 @@
+<div>
+    {% set nbrLien = liensFileAriane|length - 1 %}
+    <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="fileAriane">
+    {% for key, f in liensFileAriane %}
+        <li itemprop="itemListElement" itemscope
+          itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="{{f.url}}">
+        <span itemprop="name">{{f.label}}</span></a>
+        <meta itemprop="position" content="{{key+1}}" />
+      </li>
+    {% endfor %}
+    </ol>
+</div>

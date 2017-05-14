@@ -1,0 +1,16 @@
+essaba_annonce:
+    resource: "@ESSABAAnnonceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pageNotFound:
+    path:  /{p}
+    defaults: { _controller: ESSABAAnnonceBundle:Default:pageNotFound, p:'' }
+    requirements:
+        p: .*

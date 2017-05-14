@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Réglage profile | {% endblock %}
+
+{% block titre %}Réglage{% endblock %}
+
+
+{% block fos_user_content %}
+<div class="text-center">
+	<a class="bt bt-reglage" href="{{url('fos_user_profile_edit')}}"><span class="edit-white"></span> Modifier mes <br/>informations personnelle</a>
+	<a class="bt bt-reglage" href="{{url('fos_user_change_password')}}"><span class="lock-white"></span> Changer de mot de passe</a>
+	<a class="bt bt-reglage" href="{{url('fos_user_profile_supprimer')}}"><span class="delete-white"></span> Supprimer mon compte</a>
+</div>
+
+{% endblock fos_user_content %}
+

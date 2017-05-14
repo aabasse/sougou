@@ -1,0 +1,47 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block titre %}Se connecter ou créer un compte{% endblock %}
+
+{% block fos_user_content %}
+<div class="text-center contBlockAnim">
+    <div class="blockAnim actif">
+        <h2 class="titreAnim text-center">Se connecter</h2>
+        <form action="{{ path("fos_user_security_check") }}" method="post" >
+        <table class="tableForm">
+            <tr><td class="text-right">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label for="username">Nom d'utilisateur ou email </label></td>
+            <td>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+            </td>
+            </tr>
+            <tr>
+            <td class="text-right"><label for="password">{{ 'security.login.password'|trans }}</label></td>
+            <td><input type="password" id="password" name="_password" required="required" /></td>
+            </tr>
+            <tr>
+            <td colspan="2" class="text-center" >
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+            </td></tr>
+
+        {% if error %}
+            <tr><td colspan="2" class="erreur text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</td></tr>
+        {% endif %}
+            <tr>
+            <td colspan="2" class="text-center">
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            </td>
+            </tr>
+        </table>
+        </form>
+        <div class="text-center">
+        	<a href="{{url('fos_user_resetting_request')}}">J'ai oublié mon mot de passe</a>
+        </div>
+    </div>
+    {{ render(controller("UserBundle:Utilisateur:creer")) }}
+</div>
+{% endblock fos_user_content %}

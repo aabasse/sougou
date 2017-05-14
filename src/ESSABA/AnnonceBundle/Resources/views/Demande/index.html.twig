@@ -1,0 +1,33 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+{% block superTitre %}Annonces sur Mali | {% endblock %}
+
+{% block titre %}Annonces sur Mali{% endblock %}
+
+
+{% block cont %}
+
+
+	{% for key, annonce in annonces %}
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 padding-4" >
+	    <a href="{{ url('essaba_annonce_voir', {'slug':annonce.slug}) }}" class="annonce " itemscope itemtype="http://schema.org/Product">
+    		<div class="cont-images vertical">
+    			<div class="vertical-middle">
+			    	{% if annonce.image1 is empty %}
+						<img src="{{ asset('images/no-image.png') }}" alt="pas d'image"/>
+			    	{% else %}
+			    	<img itemprop="image" src="{{ asset(annonce.cheminImage ~ annonce.image1) }}" alt="{{annonce.titre}}"/>
+			    	{% endif %}
+		    	</div>
+	    	</div>
+	    	<span class="hidden" itemprop="url">{{ url('essaba_annonce_voir', {'slug':annonce.slug}) }}</span>
+	    	<h2 itemprop="name">{{annonce.titre}}</h2>
+	    	<div class="prix" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+	    		<span  itemprop="price" content="{{annonce.prix}}">{{annonce.prix}}</span>
+			    <span itemprop="priceCurrency" content="EUR">€</span>
+		  	</div>
+		 </a>
+	</div>
+	{% endfor %}
+{% endblock %}

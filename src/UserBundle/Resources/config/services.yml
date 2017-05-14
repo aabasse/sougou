@@ -1,0 +1,7 @@
+services:
+#    user.example:
+#        class: UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    essaba.logout.success_handler:
+        class: UserBundle\Services\GestionLogout
+        arguments: ["@router", "@security.token_storage", "@doctrine.orm.entity_manager"]

@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Modifier mon compte | {% endblock %}
+
+{% block titre %}Modifier mon compte{% endblock %}
+
+
+{% block fos_user_content %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_widget(form) }}
+    <div class="col-xs-12 text-center padding-10">
+        <button type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Mettre à jour</button>
+    </div>
+{{ form_end(form) }}
+
+
+{% endblock fos_user_content %}

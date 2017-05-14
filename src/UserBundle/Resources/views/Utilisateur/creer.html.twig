@@ -1,0 +1,25 @@
+
+
+<div class="blockAnim">
+	<h2 class="text-center titreAnim">Créer un compte</h2>
+	{{ form_start(form, {'attr': {'method': 'post', 'action': url('fos_user_registration_register')}}) }}
+	<table class="tableForm">
+	<tr><td class="text-right" >{{ form_label(form.username) }}</td><td>{{ form_widget(form.username) }}</td></tr>
+	<tr><td class="text-right" >{{ form_errors(form.username) }}</td></tr>
+	<tr><td class="text-right" >{{ form_label(form.email) }}</td><td>{{ form_widget(form.email) }}</td></tr>
+	<tr><td class="text-right" >{{ form_errors(form.email) }}</td></tr>
+	<tr><td class="text-right" >{{ form_label(form.plainPassword.first) }}</td><td>{{ form_widget(form.plainPassword.first) }}</td></tr>
+	<tr><td class="text-right" >{{ form_errors(form.plainPassword.first) }}</td></tr>
+	<tr><td class="text-right" >{{ form_label(form.plainPassword.second) }}</td><td>{{ form_widget(form.plainPassword.second) }}</td></tr>
+	<tr><td class="text-right" >{{ form_errors(form.plainPassword.second) }}</td></tr>
+	<tr><td class="text-right" >{{ form_label(form.tel) }}</td><td>{{ form_widget(form.tel) }}</td></tr>
+	<tr><td class="text-right" >{{ form_errors(form.tel) }}</td></tr>
+	<tr><td colspan="2" class="text-center"><button type="submit">Enregister</button></td></tr>
+	</table> 
+	{{ form_end(form) }}
+	<p>
+		<i>Vous disposez d'un droit d'accès <br/>et de rectification des données communiquées
+		<br/>(Loi informatique et libertés du 06/01/1978).</i>
+	</p>
+</div>
+

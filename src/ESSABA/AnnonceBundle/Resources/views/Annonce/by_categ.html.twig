@@ -1,0 +1,87 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+{% if pagination.route == 'essaba_offres_par_sous_categ' %}
+	{% set superTitre = 'List des offres dans la categorie ' ~ sousCtegorie %}
+	{% set titre = 'Offres : ' ~ sousCtegorie ~ '</strong>.' %}
+	{% set description = 'Offres : ' ~ sousCtegorie ~ ' partout à Mali'  %}
+{% elseif pagination.route == 'essaba_demandes_par_sous_categ' %}
+	{% set superTitre = 'Demandes : ' ~ sousCtegorie %}
+	{% set titre = 'Demande : ' ~ sousCtegorie ~ '</strong>.' %}
+	{% set description = 'Demandes : ' ~ sousCtegorie ~ ' partout à Mali'  %}
+{% else %}
+	{% set superTitre = 'Annonces : ' ~ sousCtegorie %}
+	{% set titre = 'Annonces : ' ~ sousCtegorie ~ '</strong>.' %}
+	{% set description = 'Annonces : ' ~ sousCtegorie ~ ' partout à Mali'  %}
+{% endif %}
+
+{% block superTitre %} {{superTitre}} | {% endblock %}
+{% block titre %}{{ titre|raw }} {% endblock %}
+{% block description%}{{ description }}{% endblock %}
+
+
+{% block cont %}
+	{% set liensFileAriane = [ {'url': url('essaba_annonce_homepage'), 'label':'Accueil'}, 
+								{'url': url('essaba_annonces'), 'label':'Annonces'}]
+
+	%}
+
+	{% if pagination.route == 'essaba_offres_par_sous_categ' %}
+		{% set liensFileAriane = liensFileAriane|merge([{'url': url('essaba_annonces_list_offre'), 'label': 'Offres' }]) %}
+	{% elseif pagination.route == 'essaba_demandes_par_sous_categ' %}
+		{% set liensFileAriane = liensFileAriane|merge([{'url': url('essaba_annonces_list_demande'), 'label': 'Demandes' }]) %}
+	{% endif %}
+
+
+
+	{% set liensFileAriane = liensFileAriane|merge([{'url': url(pagination.route, {'slugSousCateg':sousCtegorie.slug}), 'label': sousCtegorie|capitalize }]) %}					
+ 
+	{% include 'ESSABAAnnonceBundle:Default:file_ariane.html.twig' %}
+
+<!-- pc -->
+<div class="text-center hidden-xs col-sm-3">
+	<div class="contListCateg">
+		<h2>Categorie d'annonce</h2>
+		{{ render(controller("ESSABAAnnonceBundle:Default:categories", {'nomRoute': pagination.route, 'categActive': sousCtegorie})) }}
+	</div>
+</div>
+<!-- fin -->
+
+<!-- mobile -->
+<div class="col-xs-12 hidden-sm hidden-md hidden-lg margin-bottom">
+	<button data-class-affiche="listCateg-mob" data-text-cache="<span>&#10094;</span> Cacher les catégories" data-text-affiche="<span>&#10095;</span> Afficher les catégories" class="bt afficheAction"> <span>&#10095;</span> Afficher les catégories</button>
+</div>
+
+<div data-affiche-h="900px" data-open="0" class="affiche-sm-more forAffiche listCateg-mob text-center col-xs-12 hidden-sm hidden-md hidden-lg cacher-xs">
+	<div class="contListCateg">
+		<h2>Categorie d'annonce</h2>
+		{{ render(controller("ESSABAAnnonceBundle:Default:categories", {'nomRoute': pagination.route, 'categActive': sousCtegorie})) }}
+	</div>
+</div>
+<!-- fin -->
+
+
+
+
+
+<div class="text-left col-xs-12 col-sm-9 no-padding padding-left-10">
+	<div class="text-center">
+		<a {{ pagination.route == 'essaba_annonce_par_sous_categ' ? 'class="active"' }} href="{{url('essaba_annonce_par_sous_categ', {'slugSousCateg':slugSousCateg})}}">
+		<span class="{{ pagination.route == 'essaba_annonce_par_sous_categ' ? 'checked-yellow' : 'checked-square-blue' }}"></span> Tous afficher</a>
+		<a {{ pagination.route == 'essaba_offres_par_sous_categ' ? 'class="active"' }} href="{{url('essaba_offres_par_sous_categ', {'slugSousCateg':slugSousCateg})}}">
+		<span class="{{ pagination.route == 'essaba_offres_par_sous_categ' ? 'checked-yellow' : 'checked-square-blue' }}"></span> Afficher que les offre</a>
+		<a {{ pagination.route == 'essaba_demandes_par_sous_categ' ? 'class="active"' }} href="{{url('essaba_demandes_par_sous_categ', {'slugSousCateg':slugSousCateg})}}">
+		<span class="{{ pagination.route == 'essaba_demandes_par_sous_categ' ? 'checked-yellow' : 'checked-square-blue' }}"></span> Afficher que les demandes</a>
+	</div><br/>
+	{% for key, annonce in annonces %}
+		{% include 'ESSABAAnnonceBundle:Annonce:annonces_list_content.html.twig' %}  
+	{% else %}
+
+		<div class="message-robot margin-top">
+			<p class="message-content message-alert">Désoler, mais aucune annonce n'a été trouvé.</p>
+		</div>
+	{% endfor %}
+</div>
+{% if annonces|length > 0 %}
+	{% include 'ESSABAAnnonceBundle:Default:pagination.html.twig' %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block superTitre %}Email de recuperation de mot de passe envoyé | {% endblock %}
+{% block titre %}Email de recuperation de mot de passe envoyé{% endblock %}
+{% block description%}Email de recuperation de mot de passe envoyé.{% endblock %}
+
+{% block fos_user_content %}
+<p class="col-xs-12">
+	<div class="message-robot">
+		<p class="message-content message-alert">
+			{{ 'resetting.check_email'|trans({'%email%': email}) }}
+		</p>
+	</div>
+</p>
+{% endblock %}

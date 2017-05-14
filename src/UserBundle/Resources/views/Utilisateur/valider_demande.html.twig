@@ -1,0 +1,93 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Profil | {% endblock %}
+
+{% block titre %}Confirmer{% endblock %}
+
+
+
+{% form_theme form _self %}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        {%- for error in errors -%}
+            <p class="erreur"><i class="fa fa-times"></i> {{ error.message }}</p>
+        {%- endfor -%}
+    {%- endif -%}
+{%- endblock form_errors -%}
+
+
+
+{%- block form_label -%}
+    {% if label is not same as(false) -%}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif -%}
+        {% if required -%}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {%- endif -%}
+        {% if label is empty -%}
+            {%- if label_format is not empty -%}
+                {% set label = label_format|replace({
+                    '%name%': name,
+                    '%id%': id,
+                }) %}
+            {%- else -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
+        {%- endif -%}
+        <label {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ translation_domain is same as(false) ? label : label|trans({}, translation_domain) }} : {% if required -%}{%- endif -%}</label>
+    {%- endif -%}
+{%- endblock form_label -%}
+
+
+
+{% block fos_user_content %}
+
+<p class="text-center">Confirmer vous avoir fait un marché avec <a title="consulter le profil de {{demandeur}}" href="{{url('fos_user_profile_show_compte', {pseudo : demandeur})}}"> {{demandeur}} </a> pour l'annonce {{titreAnnonce}} ? </P>
+
+<div class="text-center">
+
+{# form_start(form, {'attr': {'novalidate': 'novalidate'}}) #}
+{{ form_start(form) }}
+{{ form_widget(form.confirme) }}
+{{ form_errors(form.confirme) }}
+<p class="text-center">Donnez votre niveau de satisfaction </p>
+<div class="hidden">
+{{ form_widget(form.vote) }}
+</div>
+
+<div id="contVote" class="aCache">
+	<label groupe="1" for="form_vote_0" force="classique" class="pointer lb-fille bt-yellow"><span class='thumb-up-yellow ico-fille'></span>
+	<br/>Bon zahe</label>
+
+	<label groupe="1" for="form_vote_1" force="classique" class="pointer lb-fille bt-yellow"><span class='thumbs-down-yellow ico-fille'></span>
+	<br/>Mauvais zahe</label><br/>
+	{{ form_errors(form.vote) }}
+</div>
+
+	<button class="bt" value="submit">Envoyer</button>
+{{ form_end(form) }}
+
+
+
+
+
+
+
+	
+</div>
+<h2 class="text-center">Message de ZBZ</h2>
+<div class="message-robot">
+	<p class="message-content message-alert">En confirmant, votre nombre d'achat sera augmenté.</a>
+	</p>
+</div>
+
+
+
+{% endblock fos_user_content %}
+

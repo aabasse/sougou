@@ -1,0 +1,97 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+
+
+
+{% if type == 'offre' %}
+	{% set superTitre = 'Offres de bien et de services.' %}
+	{% set titre = 'Offres Mali' %}
+	{% set description = 'Offres de bien et de services.' %}
+{% elseif type == 'demande' %}
+	{% set superTitre = 'Annonces sur Mali' %}
+	{% set titre = 'Demande</strong>' %}
+	{% set description = 'Demandes' %}
+{% else %}
+	{% set superTitre = 'Annonces' %}
+	{% set titre = 'Annonces' %}
+	{% set description = 'Annonces sur Mali.' %}
+{% endif %}
+
+{% block superTitre %} {{superTitre}} | {% endblock %}
+{% block titre %}{{ titre|raw }} {% endblock %}
+{% block description%}{{ description }}{% endblock %}
+
+
+{% block cont %}
+	{% if( pagination.route == 'essaba_annonces_list_offre') %}
+		{% set routeCateg = 'essaba_offres_par_sous_categ' %}
+	{% elseif pagination.route == 'essaba_annonces_list_demande' %}
+		{% set routeCateg = 'essaba_demandes_par_sous_categ' %}
+	{% else %}
+		{% set routeCateg = 'essaba_annonce_par_sous_categ' %}
+	{% endif %}
+
+
+	
+
+	{% set liensFileAriane = [ {'url': url('essaba_annonce_homepage'), 'label':'Accueil'}, 
+								{'url': url('essaba_annonces'), 'label':'Annonces'}]  %}
+
+	{% if pagination.route == 'essaba_annonces_list_offre' %}
+		{% set liensFileAriane = liensFileAriane|merge([{'url': url('essaba_annonces_list_offre'), 'label': 'Offres' }]) %}
+	{% elseif pagination.route == 'essaba_annonces_list_demande' %}
+		{% set liensFileAriane = liensFileAriane|merge([{'url': url('essaba_annonces_list_demande'), 'label': 'Demandes' }]) %}
+	{% endif %}
+
+
+
+
+
+	{% include 'ESSABAAnnonceBundle:Default:file_ariane.html.twig' %} 
+
+<!-- pc -->
+<div class="text-center hidden-xs col-sm-3">
+	<div class="contListCateg">
+		<h2>Categorie d'annonce</h2>
+		{{ render(controller("ESSABAAnnonceBundle:Default:categories", {'nomRoute': routeCateg})) }}
+	</div>
+</div>
+<!-- fin -->
+
+<!-- mobile -->
+<div class="col-xs-12 hidden-sm hidden-md hidden-lg margin-bottom">
+	<button data-class-affiche="listCateg-mob" data-text-cache="<span>&#10094;</span> Cacher les catégories" data-text-affiche="<span>&#10095;</span> Afficher les catégories" class="bt afficheAction"> <span>&#10095;</span> Afficher les catégories</button>
+</div>
+
+<div data-affiche-h="900px" data-open="0" class="affiche-sm-more forAffiche listCateg-mob text-center col-xs-12 hidden-sm hidden-md hidden-lg cacher-xs">
+	<div class="contListCateg">
+		<h2>Categorie d'annonce</h2>
+		{{ render(controller("ESSABAAnnonceBundle:Default:categories", {'nomRoute': routeCateg})) }}
+	</div>
+</div>
+<!-- fin -->
+
+
+
+<div class="text-left col-xs-12 col-sm-9 no-padding padding-left-10">
+	<div class="text-center">
+		<a {{ pagination.route == 'essaba_annonces' ? 'class="active"' }} href="{{url('essaba_annonces')}}">
+		<span class="{{ pagination.route == 'essaba_annonces' ? 'checked-yellow' : 'checked-square-blue' }}"></span> Tous afficher</a>
+		<a {{ pagination.route == 'essaba_annonces_list_offre' ? 'class="active"' }} href="{{url('essaba_annonces_list_offre')}}">
+		<span class="{{ pagination.route == 'essaba_annonces_list_offre' ? 'checked-yellow' : 'checked-square-blue' }}"></span> Afficher que les offre</a>
+		<a {{ pagination.route == 'essaba_annonces_list_demande' ? 'class="active"' }} href="{{url('essaba_annonces_list_demande')}}">
+		<span class="{{ pagination.route == 'essaba_annonces_list_demande' ? 'checked-yellow' : 'checked-square-blue' }}"></span> Afficher que les demandes</a>
+	</div>
+	{% for key, annonce in annonces %}
+		{% include 'ESSABAAnnonceBundle:Annonce:annonces_list_content.html.twig' %}  
+	{% else %}
+		<div class="message-robot">
+			<p class="message-content message-alert">Désoler, mais aucune annonce n'a été trouvé.
+			</p>
+		</div>
+	{% endfor %}
+</div>
+{% if annonces|length > 0 %}
+	{% include 'ESSABAAnnonceBundle:Default:pagination.html.twig' %}
+{% endif %}
+{% endblock %}

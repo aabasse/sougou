@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+	<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:300' rel='stylesheet' type='text/css'>
+
+
+	<style type="text/css">
+		body{
+			font-family: 'Alegreya Sans' !important;
+		}
+		header{background: #6cc5dc;color: white;padding: 10px;text-align: center;}
+
+		.message {
+		    max-width: 500px;
+		    margin-left: 40px;
+		    padding: 10px;
+		    margin-top: 10px;
+		    margin-bottom: 40px;
+		    position:relative;
+		    background:#6cc5dc;
+		    color:white;
+		}
+
+		.message::before
+		{
+			display: inline-block;
+			content: "";
+			position: absolute;
+			left: -16px;
+			border-bottom: 10px solid transparent;
+			border-right: 16px solid #6cc5dc;
+			border-top: 11px solid transparent;
+
+		}
+		
+		footer {
+		    background: #222222;
+		    padding: 10px;
+		    color:white;
+		    text-align: center;
+		}
+		footer a{color: white;}
+	</style>
+</head>
+<body>
+	<header><h1>Zibonzahe</h1></header>
+	<h3> </h3>
+	<p>
+	Bonjour {{dest_nom}}, <br/>
+	Vous avez reçu un nouveaux message de {{exped_nom}} pour votre annonce : {{annonce_titre}}
+	</p>
+	<p><a href="{{url}}">Consulter le message sur Zibonzahe</a></p>
+	<footer>
+		<p><a href="http://zibonzahe.fr">zibonzahe.fr</a> | contact : contact@zibonzahe.fr</p>
+	</footer>
+</body>
+</html>

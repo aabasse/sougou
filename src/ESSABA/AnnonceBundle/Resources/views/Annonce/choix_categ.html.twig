@@ -1,0 +1,44 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+{% set nomUrl = 'essaba_annonce_offre_new' %}
+{% if estOffre == false %}
+{% set nomUrl = 'essaba_annonce_demande_new' %}
+{% endif %}
+
+
+{% block superTitre %}Sélectionner le type de votre annonce | {% endblock %}
+{% block description%}
+	{% if estOffre == false %}
+	Vendez vos objets sur Mali en publiant une annonce.
+	{% else %}
+	Faite votre demande
+	{% endif %}
+	{% endblock %}
+{% block titre %}
+
+{{ estOffre ? 'Choisissez le type de bien ou service' : 'Vous cherchiez quel  type de bien ou de service ?' }}
+
+{% endblock %}
+
+
+{% block cont %}
+<div class="text-center">
+	{% for key, categ in categories %}
+		<table class="typeCateg">
+			<tr>
+				<td class="contIconne text-center"><span class="categ-{{categ.id}}"></span></td>
+				<td>
+					{% for key, sousCateg in categ.sousCategories %}
+						<a href="{{url(nomUrl, {'slugSousCateg':sousCateg.slug} )}}">
+							<h3>{{sousCateg.libelle|capitalize}}</h3>
+						</a>
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><h2>{{categ.libelle|capitalize}}</h2></td>
+			</tr>
+		</table>
+	{% endfor %}
+</div>
+{% endblock %}

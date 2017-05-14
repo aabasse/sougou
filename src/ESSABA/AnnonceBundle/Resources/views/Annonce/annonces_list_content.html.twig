@@ -1,0 +1,44 @@
+<div class="annonce" itemscope itemtype="http://schema.org/Product">
+	<a href="{{ url('essaba_annonce_voir', {'categ':annonce.sousCategorie.slug, 'slug':annonce.slug}) }}" class="cont-images vertical">
+		<div class="vertical-middle">
+	    	{% if annonce.getPhotoPrincipal() is null %}
+	    		{% if annonce|isInstanceof('Emploi') %}
+					<img src="{{ asset('images/travail.png') }}" alt="travail"/>
+	    		{% else %}
+	    			<img src="{{ asset('images/no-image.png') }}" alt="pas d'image"/>
+				{% endif %}
+	    	{% else %}
+	    		<img itemprop="image" src="{{ asset(annonce.cheminImage ~ 'min_'~annonce.getPhotoPrincipal().nom) }}" alt="{{annonce.titre}}"/>
+	    	{% endif %}
+    	</div>
+	</a>
+	<div class="descr">
+    	<p class="text-left"><span class="clock"></span> <i>{{annonce.created.date|formatDate|raw}}</i></p>
+    	<strong>{{annonce.commune|afficherCommune}}</strong>
+    	<span itemprop="category" content="{{annonce.sousCategorie}}"></span>
+	</div>
+	<span class="hidden" itemprop="url">{{ url('essaba_annonce_voir', {'categ':annonce.sousCategorie.slug, 'slug':annonce.slug}) }}</span>
+	<a href="{{ url('essaba_annonce_voir', {'categ':annonce.sousCategorie.slug, 'slug':annonce.slug}) }}">
+	<h2 itemprop="name">{{annonce.titre}}</h2>
+	</a>
+	{% if annonce.estOffre == true %}
+		{% if annonce|isInstanceof('Emploi') %}
+		<div class="infoEmploi">
+			<span>Emploi</span>
+  		</div>
+		{% elseif annonce.autreMoyen is not empty %}
+		<div class="prix">
+			<span>{{annonce.autreMoyen}}</span>
+  		</div>
+		{% else %}
+    	<div class="prix" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    		<span  itemprop="price" content="{{annonce.prix}}">{{annonce.prix}}</span>
+		    <span itemprop="priceCurrency" content="EUR">€</span>
+	  	</div>
+	  	{% endif %}
+  	{% else %}
+  		<div class="infoDemande">
+    		<span>Demande</span>
+	  	</div>
+  	{% endif %}
+</div>

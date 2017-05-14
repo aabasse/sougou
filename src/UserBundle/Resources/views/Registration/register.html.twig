@@ -1,0 +1,25 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Créer un compte | {% endblock %}
+{% block titre %}Créer mon compte{% endblock %}
+
+{% form_theme form _self %}
+{% block form_row %}
+{% spaceless %}
+    <div class="col-xs-12">
+    	<div class="col-sm-6 text-right-no-xs">
+    	{{ form_label(form) }}
+        </div>
+        <div class="col-sm-6">
+        	{{ form_widget(form) }}
+        </div>
+        <div class="col-xs-12 erreur"> 
+        	{{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}

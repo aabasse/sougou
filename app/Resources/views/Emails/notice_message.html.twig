@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Nouveau message</title>
+	<style type="text/css">
+		.message {
+		    max-width: 500px;
+		    margin-left: 40px;
+		    padding: 10px;
+		    margin-top: 10px;
+		    margin-bottom: 40px;
+		    position:relative;
+		    background:#6cc5dc;
+		    color:white;
+		}
+
+		.message::before
+		{
+			display: inline-block;
+			content: "";
+			position: absolute;
+			left: -16px;
+			border-bottom: 10px solid transparent;
+			border-right: 16px solid #6cc5dc;
+			border-top: 11px solid transparent;
+
+		}
+		footer a{color: white;}
+	</style>
+</head>
+<body style="font-family: 'Alegreya Sans' !important;">
+	<table width="100%">
+		<tr>
+			<td style="background: #6cc5dc;color: white;padding: 10px;text-align: center;"><h1>Mali</h1></td>
+		</tr>
+		<tr>
+			<td>Bonjour {{dest_nom}}, <br/>Vous avez reçu un nouveaux message de {{exped_nom}} pour votre annonce : {{annonce_titre}}</td>
+		</tr>
+		<tr>
+			<td><a style="color:#6cc5dc;" href="{{url}}">Consulter le message sur Mali</a></td>
+		</tr>
+		<tr style="background: #222222;padding: 10px;color:white;text-align: center;">
+			<td><a href="http://urlprod">urlprod</a> | contact : Mali@gmail.com</td>
+		</tr>
+	</table>
+</body>
+</html>

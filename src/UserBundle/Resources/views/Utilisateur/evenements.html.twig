@@ -1,0 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Mes évenements | {% endblock %}
+
+{% block titre %}Mes évenements{% endblock %}
+
+
+{% block cont %}
+
+	{% for key, evenement in evenements %}
+		{% include 'ESSABAAnnonceBundle:Evenement:list_content.html.twig' %}  
+	{% else %}
+		<div class="message-robot">
+			<p class="message-content message-alert">
+			Aucun événement n'a été trouvé.
+			</p>
+		</div>
+	{% endfor %}
+
+{% endblock cont %}
+
+
+
+

@@ -1,0 +1,9 @@
+<div id="contType" data-active-type="{{typeEvenementActive is not null ? typeEvenementActive.id}}">
+{% for key, typeEvenement in typeEvenements %}
+    <ul>
+        <li><a {% if(typeEvenementActive is not null and typeEvenement.id == typeEvenementActive.id) %} class="active" {% endif %} href="{{url('essaba_evenement_par_type_evenement', {'slugTypeEvenement':typeEvenement.slug} )}}">
+        	<span class="type-evenement-{{typeEvenement.id}}-gris"></span> {{typeEvenement.libelle|capitalize}}</a>
+        <li>
+    </ul>
+{% endfor %}
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="application-name" content="Sougou"/>
+        <title>{% block superTitre %}{% endblock %}Sougou</title>
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <meta name="theme-color" content="#27ae60">
+        <link rel="icon" type="image/x-icon" href="/web{{ asset('favicon.ico') }}" />
+        <link rel="search" type="application/opensearchdescription+xml" title="Sougou" href="{{asset('opensearch.xml')}}" />
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('bootstrap-3.3.6-dist/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('jquery-ui-1.11.4.custom/jquery-ui.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        <!-- fb meta -->
+        {% block facebookMeta %}
+        <meta property="og:url" content="{{app.request.uri}}" />
+        <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() ~ asset('images/apercu/zbz_accueil.jpg')}}" />
+        {% endblock %}
+        <!-- fin fb -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('plugins/noty/animate-min.css') }}"/>
+        <!--<script src="{{asset('js/googleAnalytics.js')}}" type="text/javascript"></script>-->
+    </head>
+    <body>
+        <div id="head" class="container-fluid">
+            <header class="row">
+                <div class="col-xs-2">
+                    {#<a href="{{path('essaba_annonce_homepage')}}"><img width="32" height="auto" alt="logo Sougou blanc" id="logo-zbz" src="{{asset('images/logo_Sougou_blanc.png')}}"></a>#}
+                </div>
+                <div class="col-xs-8">
+                    <h1 class="text-center">Sougou</h1>
+                    <div class="text-center"><i>Une autre façon de faire le commerce.</i></div> 
+                </div>
+                <div class="col-xs-2">
+                    <button class="bt-none bt-affiche-menu"><span class="menu-white"></span></button>
+                </div>
+                
+            </header>
+
+            {{ render(controller("ESSABAAnnonceBundle:Default:menu")) }}
+            
+        </div>
+        <div id="container" class="container-fluid {% if isAccueil is defined %} cont-accueil {% endif %}">
+            
+            <div class="row mh-100">
+                <div class="col-md-2 cote hidden-xs hidden-sm"></div>
+                <div class="col-xs-12 col-sm-12 col-md-8" id="cont" >
+                    {% block superCont %}{% endblock %}
+                </div>
+                <div class="col-md-2 cote hidden-xs hidden-sm"></div>
+                
+            </div>
+        </div>
+
+
+        {% for message in app.session.getFlashBag.get('message') %}
+            <div class="flash-message hidden" data-type="success">
+                <div>{{ message }}</div><div><span class="top-right close-white"></span> </div> 
+            </div>
+            {% endfor %}
+            {% for erreur in app.session.getFlashBag.get('erreur') %}
+            <div class="flash-message hidden" data-type="error">
+                <div>{{ erreur }}</div><div><span class="top-right close-white"></span> </div> 
+            </div>
+        {% endfor %}
+
+
+        <footer class="container-fluid text-center">
+            <div class="col-sx-12 col-sm-4">
+                <a href="{{url('essaba_mentions_legales')}}">Mentions légales</a>
+                <br/>
+                <a href="mailto:Sougou@gmail.com">Contact : Sougou@gmail.com</a>
+            </div>
+            <div class="col-xs-6 col-sm-4 sougou">
+                {#<img height="30px" width="auto" alt="logo Sougou blanc" src="{{asset('images/logo_Sougou_blanc.png')}}">#}
+                Sougou
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <img height="60px" width="auto" alt="logo essaba" src="{{asset('images/essaba_logo.png')}}">
+            </div>
+        </footer> 
+        <script src="{{asset('js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('jquery-ui-1.11.4.custom/jquery-ui.min.js')}}" type="text/javascript"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <script src="{{asset('js/anim/TweenMax.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/anim/ScrollMagic.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('js/anim/animation.gsap.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+
+
+        <script type="text/javascript" src="{{ asset('plugins/noty/packaged/jquery.noty.packaged.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('plugins/noty/themes/mali-min.js')}}"></script>
+
+
+        <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
+        {% block javascripts %}{% endblock %}
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+{% block titre %}Erreur {{ status_code }}{% endblock %}
+{% block description%}Page non trouvé{% endblock %}
+
+{% block cont %}
+	<div class="message-robot">
+		<p class="message-content message-alert">{{ status_text }}</p>
+	</div>
+	
+{% endblock %}

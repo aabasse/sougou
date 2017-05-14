@@ -1,0 +1,16 @@
+<div id="pagination" class="margin-top">
+    <div class="pagination-buttons">
+        {% if pagination.page>1 %}
+            <a class="arrow-first-blue" href="{{ path(pagination.route, pagination.route_params|merge({'page': 1})) }}"></a>
+            <a class="arrow-left-blue" href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page-1})) }}"></a>
+        {% endif %}
+        {#display p numbers only from p-4 to p+4 but don't go <1 or >pages_count#}
+        {% for p in range(max(pagination.page-4, 1), min(pagination.page+4, pagination.pages_count)) %}
+            <a{% if p == pagination.page %} class="current-page"{% endif %} href="{{ path(pagination.route, pagination.route_params|merge({'page': p})) }}">{{ p }}</a>
+        {% endfor %}
+        {% if pagination.page<pagination.pages_count %}
+            <a class="arrow-right-blue" href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.page+1})) }}"></a>
+            <a class="arrow-last-blue" href="{{ path(pagination.route, pagination.route_params|merge({'page': pagination.pages_count})) }}"></a>
+        {% endif %}
+    </div>
+</div>

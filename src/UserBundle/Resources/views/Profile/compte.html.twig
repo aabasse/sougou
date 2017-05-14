@@ -1,0 +1,69 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}{{user.username|capitalize}} | {% endblock %}
+
+{% block description%} Consultez le profil Zibonzahe de {{user.username|capitalize}}.{% endblock %}
+
+{% block titre %}Profil de {{user.username|capitalize}}{% endblock %}
+
+{% block fos_user_content %}
+
+<div class="contSvgCarte col-xs-12 col-sm-7 col-md-7 col-lg-8">
+	<div class="col-xs-12 col-lg-6 profil-cont margin-top no-padding cadre-ombre">
+		<div class="text-center col-xs-12">
+          <div class="contImg inline-block">
+            {% if user.image != null %}
+              <img alt="image profil {{ user.username }}" src="{{asset('uploads/images/profil/profil_'~user.image)}}"/>
+            {% else %}
+              <img alt="image profil {{ user.username }}" src="{{asset('images/profil_defaut.png')}}"/>
+            {% endif %}
+          </div>
+          <div class="contChiffre inline-block">
+          	<h2>{{user.username|capitalize}}</h2>
+          	<p>
+          		{% if user.estConnecte() %}
+            		<i class="fa fa fa-circle color-green" aria-hidden="true"></i> Connecté
+	            {% else %}
+	            	<i class="fa fa fa-circle color-gris" aria-hidden="true"></i> <span class="color-gris">Déconnecté</span>
+	            {% endif %}
+	        </p>
+            <p class="no-margin"><span class='rond'> {{ user.nbrAnnonce}}</span> annonces</p>
+            
+          </div>
+        </div>
+        <div class="col-xs-6">
+          	<span class='thumb-up-yellow filled'></span> {{user.nbrBon}}
+            <span class='thumbs-down-yellow filled'></span> {{user.nbrMauvais}}
+        </div>
+        <div class="col-xs-6 text-right">
+          	<span class='receive-cash-yellow filled'></span> {{user.nbrAcheter}} achats
+        </div>
+        <div class="col-xs-12">
+          <p>{{user.email}}</p>
+          {% if user.tel != null %}<p>Téléphone : {{user.tel}}</p>{% endif %}
+        </div>
+	</div>
+</div>
+
+<div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+	<div id="mes-annonces" class="col-xs-12 margin-top no-padding">
+		<h2><span class="adv-gray"></span> Ces annonces</h2>
+		<div>
+			{% for key, annonce in user.annonces %}
+			    	{% include 'ESSABAAnnonceBundle:Annonce:annonces_profile_content.html.twig' %} 
+			{% else %}
+				<div class="text-center">
+					<span class="empty-box"></span>
+					<p>Aucune annonce en publication.</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock fos_user_content %}
+

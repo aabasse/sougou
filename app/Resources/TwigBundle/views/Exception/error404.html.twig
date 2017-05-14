@@ -1,0 +1,11 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+{% block titre %}Erreur 404{% endblock %}
+{% block description%}Page non trouvé{% endblock %}
+
+{% block cont %}
+	<div id="bgMangrove" class="text-center">
+		<img class="cadre-ombrez" alt="mangrove" src="{{ asset('images/404.png') }}">
+	</div>
+	<p class="text-center">Désolé, la page que vous cherchez n'existe pas ou plus.<br/><a href="{{url('essaba_annonce_homepage')}}">Retourner à l accueil</a></p>
+	
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+{% block superTitre %}Déposer une annonce | {% endblock %}
+
+{% block titre %}Déposer une annonce{% endblock %}
+
+
+{% block cont %}
+
+<div class="col-xs-6 text-right vertical h-100">
+	<div class="hidden-xs info info-left">
+		 ici ! pour <strong>proposer un bien ou service</strong>.
+	</div>
+	<br/>
+	<a href="{{url('essaba_annonce_offre_choix_categ')}}" class="vertical-middlehh">
+	<span class='a-icon handshake-blue'></span><br/>je propose
+	</a>	
+</div>
+<div class="col-xs-6 text-left vertical h-100">
+	<div class="hidden-xs info info-right">
+		 ici ! pour <strong>faire une demande</strong>.
+	</div>
+	<br/>
+	<a href="{{url('essaba_annonce_demande_choix_categ')}}" class="vertical-middleh">
+		<span class='a-icon in-love-bleu'></span><br/>je recherche
+	</a>
+</div>
+{% endblock %}

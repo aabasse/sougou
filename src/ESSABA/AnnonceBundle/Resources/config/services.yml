@@ -1,0 +1,113 @@
+services:
+#    essaba_annonce.example:
+#        class: ESSABA\AnnonceBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    essaba_annonce.annoncetype:
+        class: ESSABA\AnnonceBundle\Form\AnnonceType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.annonceedittype:
+        class: ESSABA\AnnonceBundle\Form\AnnonceEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.mototype:
+        class: ESSABA\AnnonceBundle\Form\MotoType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.motoedittype:
+        class: ESSABA\AnnonceBundle\Form\MotoEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.voituretype:
+        class: ESSABA\AnnonceBundle\Form\VoitureType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.voitureedittype:
+        class: ESSABA\AnnonceBundle\Form\VoitureEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.emploitype:
+        class: ESSABA\AnnonceBundle\Form\EmploiType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.emploiedittype:
+        class: ESSABA\AnnonceBundle\Form\EmploiEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.vetementtype:
+        class: ESSABA\AnnonceBundle\Form\VetementType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.vetementedittype:
+        class: ESSABA\AnnonceBundle\Form\VetementEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.chaussuretype:
+        class: ESSABA\AnnonceBundle\Form\ChaussureType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.chaussureedittype:
+        class: ESSABA\AnnonceBundle\Form\ChaussureEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.venteimobilieretype:
+        class: ESSABA\AnnonceBundle\Form\VenteImobiliereType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.venteimobiliereedittype:
+        class: ESSABA\AnnonceBundle\Form\VenteImobiliereEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.location:
+        class: ESSABA\AnnonceBundle\Form\LocationType
+        arguments: ["@security.authorization_checker", "@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.locationedittype:
+        class: ESSABA\AnnonceBundle\Form\LocationEditType
+        arguments: ["@request_stack"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.messagetype:
+        class: ESSABA\AnnonceBundle\Form\MessageType
+        arguments: ["@security.authorization_checker"]
+        tags:
+            - { name: form.type }
+    essaba_annonce.image:
+        class: ESSABA\AnnonceBundle\Services\GestionImage
+    essaba_annonce.generale:
+        class: ESSABA\AnnonceBundle\Services\Generale
+    essaba_annonce.gestionannonce:
+        class: ESSABA\AnnonceBundle\Services\GestionAnnonce
+    app.twig_extension:
+        class: ESSABA\AnnonceBundle\Twig\AppExtension
+        #public: false
+        tags:
+            - { name: twig.extension }
+    essaba_annonce.doctrine.notification:
+        class: ESSABA\AnnonceBundle\EventListener\ApplicationNotification
+        #arguments: ["@mailer", "@router", "@templating"]
+        arguments: ["@router", "@service_container", "@essaba_annonce.image"]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: postFlush }
+            - { name: doctrine.event_listener, event: preRemove }
+    essaba_annonce.evenementtype:
+        class: ESSABA\AnnonceBundle\Form\EvenementType
+        arguments: ["@security.authorization_checker"]
+        tags:
+            - { name: form.type }

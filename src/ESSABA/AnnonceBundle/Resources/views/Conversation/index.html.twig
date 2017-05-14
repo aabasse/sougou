@@ -1,0 +1,64 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+{% block superTitre %}Mes conversations | {% endblock %}
+
+{% block titre %}Mes conversations{% endblock %}
+
+
+{% block cont %}
+<div class='col-xs-12'>
+	{% for conversation in conversations %}
+
+		{% if (app.user.username == conversation.nom1) %}
+			{% set nom = conversation.nom2 %}
+			{% set image = conversation.image2 %}
+		{% else %}
+			{% set nom = conversation.nom1 %}
+			{% set image = conversation.image1 %}
+		{% endif %}
+
+
+		{% if conversation.estInconnu %} 
+			{% set nomPourUrl = conversation.emailInconnu|url_encode %}
+		{% else %}
+			{% set nomPourUrl = nom %}
+		{% endif %}
+
+
+
+	<a href="{{path('essaba_annonce_message_show', {'idConversation' : conversation.idConversation, 'nom' : nomPourUrl} )}}" class="conv">
+		<div class='col-xs-3 col-sm-2 text-center'>
+			{% if image != null and image != 'no' %}
+				<img alt="image profil {{ nom }}" src="{{asset('uploads/images/profil/profil_'~image)}}">
+			{% else %}
+				<img alt="image profil {{ nom }}" src="{{asset('images/profil_defaut.png')}}">
+			{% endif %}
+		</div>
+		<div class='col-xs-9 col-sm-8'>
+			<p class="nom">
+				{{nom}}
+				{% if conversation.estInconnu %} 
+					: <span class="color-red">Inconnu</span> 
+					<br/> {{conversation.emailInconnu}}
+				{% endif %}
+			</p>
+			<p class="titre">Pour l'annonce : {{ conversation.titreAnnonce }}</p>
+			<p class="contenu">{{ conversation.contenu |afficherEmoji| truncate(100)|raw }}</p>
+		</div>
+		<div class='col-xs-12 col-sm-2 date text-right'>
+			<p>{{ conversation.created.date|formatDate|raw }}</p>
+		</div>
+		<input type="hidden" id="refreshed" value="no">
+		<div class='col-xs-12'><hr/></div>
+	</a>
+	{% else %}
+		<div class="message-robot">
+			<p class="message-content message-alert">Aucune conversation trouvée. Dès qu'une annonce est supprimée, les conversations de l'annonce sont supprimées aussi.
+			</p>
+		</div>
+	{% endfor %}
+
+	<div class='col-xs-12 text-center' >{{ conversations|length }} conversations</div>
+</div>
+
+{% endblock %}

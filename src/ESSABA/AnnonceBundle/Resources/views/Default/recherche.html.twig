@@ -1,0 +1,90 @@
+{% extends "ESSABAAnnonceBundle::layout.html.twig" %}
+
+{% block superTitre %}
+	{% if(commune != null) %}
+		Les annonces sur {{commune.nom|capitalize}}
+	{% else %}
+		Rechercher une annonce
+	{% endif %} | {% endblock %}
+{% block description %}Faite une recherche parmis tout les annonces disponile a Mali.{% endblock %}
+
+{% block titre %}
+	{% if(commune != null) %}
+		Les annonces sur {{commune.nom|capitalize}}
+	{% else %}
+		Rechercher une annonce
+	{% endif %}
+{% endblock %}
+
+{% form_theme form _self %}
+{% block form_row %}
+{% spaceless %}
+	<div class="critere">
+		{{ form_label(form) }}<br/>
+    	{{ form_widget(form) }}
+    	{{ form_errors(form) }}
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+
+{% block cont %}
+<div id="contFormRecherche">
+	{{ form_start(form) }}
+		<h2>Critère de recherche</h2>
+		<div>
+			<div class="critere">
+				{{ form_label(form.titre) }}<br/>
+				{{ form_widget(form.titre) }}
+			</div>
+			<div class="inline-block">
+				{{ form_label(form.typeAnnonce) }}<br/>
+				{{ form_widget(form.typeAnnonce) }}
+			</div>
+			<div class="critere">
+				<i class="fa fa-map-marker"></i>
+				{{ form_label(form.commune) }}<br/>
+				{{ form_widget(form.commune) }}
+			</div>
+			<div class="critere">
+				Prix entre : <br/>
+				{{ form_widget(form.min) }} et
+				{{ form_widget(form.max) }}
+			</div>
+			<div class="critere">
+				{{ form_label(form.categorie) }}<br/>
+				{{ form_widget(form.categorie) }}
+			</div>
+		</div>
+		<div class='critere-specifique'>
+			<div>{{ form_widget(form) }}</div>
+		</div>
+		<div>
+			<button type="submit"><i class="fa fa-search"></i> Rechercher</button>
+			<span class="tiret"></span>
+		</div>
+	{{ form_end(form) }}
+</div>
+<div class="row text-center">
+{% for key, annonce in annonces %}
+    {% include 'ESSABAAnnonceBundle:Annonce:annonces_list_content.html.twig' %}  
+{% else %}
+	<div class="message-robot">
+		<p class="message-content message-alert">Désolé, mais rien ne correspond à vos critères de recherche. Merci de réessayer avec d'autres critères.
+		</p>
+	</div>
+{% endfor %}
+{% if annonces|length > 0 %}
+<div id="cont-pagination-recherche">
+	{% include 'ESSABAAnnonceBundle:Default:pagination.html.twig' %}
+</div>
+{% endif %}
+</div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{asset('js/recherche-min.js')}}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Supprimer mon compte | {% endblock %}
+
+{% block titre %}Supprimer mon compte{% endblock %}
+
+{% form_theme form _self %}
+{% block form_row %}
+{% spaceless %}
+    <div class="col-xs-12">
+    	{{ form_label(form) }}
+		{{ form_widget(form) }}
+		<div class="erreur">
+        	{{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        {%- for error in errors -%}
+            <i class="fa fa-times"></i>  {{ error.message }}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endblock form_errors -%}
+
+
+{% block fos_user_content %}
+	<p class="text-center">Pour confirmer la suppression de votre compte, veuillez saisir votre mot de passe.</p>
+	{{ form_start(form, {'attr': {'class': 'text-center'} }) }}
+		{{ form_widget(form) }}
+		<div class="text-center">
+			<button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</button>
+			<a class="bt" href="{{url('fos_user_profile_show')}}"><i class="fa fa-times" aria-hidden="true"></i> Annuler</a>
+		</div>
+	{{ form_end(form) }}
+	<div class="margin-top">
+		<div class="message-robot">
+			<span class="robot robot-rienTrouve"></span>
+			<p>Je suis triste, d'apprendre ton départ... &#128546;&#128557;</p>
+		  	<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Attention : </p>
+			<ul>
+				<li>Votre compte sera supprimé définitivement.</li>
+				<li>Toutes vos annonces, événements et conversations seront supprimés.</li>
+				<li>Cette action est irrévocable.</li>
+			</ul>
+		  </div>
+		</div>
+	</div>
+
+		
+{% endblock fos_user_content %}

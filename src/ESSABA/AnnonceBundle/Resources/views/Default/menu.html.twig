@@ -1,0 +1,48 @@
+<nav id="mainMenu" class="text-center row" >
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+        <a href="{{path('essaba_annonce_homepage')}}" class="bt-lg ">
+            <span class="a-icon mayotte-white"></span>
+            <p>Accueil</p>
+        </a>
+        <a href="{{path('essaba_annonces')}}" class="bt-lg ">
+            <span class="a-icon annonce-white"></span>
+            <p>Les annonces</p>
+        </a>
+        <a href="{{path('essaba_annonce_deposer_une_annonce')}}" class="bt-lg ">
+            <span class="a-icon microphone-white"></span>
+            <p>Déposer une annonce</p>
+        </a>
+        <a href="{{path('essaba_notification_list')}}" class="bt-lg ">
+            <span class="a-icon siren-white"></span>
+            <p>Notification</p>
+            <span class="notif" id="notification">
+            {% if(nbrNotification > 0 ) %}
+                {{nbrNotification}}
+            {% endif %}
+            </span>
+        </a>
+        <a href="{{url('essaba_annonce_recherche')}}" class="bt-lg ">
+            <span class="a-icon search-white"></span>
+            <p>Rechercher</p>
+        </a>
+        <a href="{{path('fos_user_profile_show')}}" class="bt-lg ">
+            <span class="a-icon user-white"></span>
+            <p>Mon compte</p>
+        </a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY')%}
+        <a href="{{path('fos_user_security_logout')}}" class="bt-lg ">
+            <span class="a-icon shutdown-white"></span>
+            <p>Se déconnecter</p>
+        </a>
+        {% else %}
+        <a href="{{path('fos_user_registration_register')}}" class="bt-lg ">
+            <span class="a-icon add-user-white"></span>
+            <p>Créer un compte</p>
+        </a>
+        {% endif %}
+        <a href="{{url('essaba_aide')}}" class="bt-lg">
+            <span class="a-icon help-white"></span>
+            <p>Aide</p>
+        </a>
+    </div>
+</nav>

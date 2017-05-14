@@ -1,0 +1,156 @@
+essaba_annonce_homepage:
+    path:     /
+    defaults: { _controller: ESSABAAnnonceBundle:Default:index }
+essaba_annonces:
+    path:     les-petites-annonces-de-mayotte/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:index, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonces_list_offre:
+    path:     les-petites-annonces-de-mayotte/consulter-les-offres/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:index, page:1, type:'offre' }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonces_list_demande:
+    path:     les-petites-annonces-de-mayotte/consulter-les-demandes/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:index, page:1, type:'demande' }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_recherche:
+    path:     rechercher-une-annonces-sur-mayotte/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Default:recherche, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_recherche_term:
+    path:     rechercher/{term}/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Default:recherche, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_par_commune:
+    path:     annonces/mayotte/{commune}/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Default:recherche, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_par_sous_categ:
+    path:     annonces/{slugSousCateg}/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:listByCateg, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_offres_par_sous_categ:
+    path:     offres/{slugSousCateg}/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:listByCateg, page:1, type:'offre' }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_demandes_par_sous_categ:
+    path:     demandes/{slugSousCateg}/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:listByCateg, page:1, type:'demande' }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_deposer_une_annonce:
+    path:     annonce/deposer-une-annonce
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:deposer }
+essaba_annonce_offre_choix_categ:
+    path:     annonce/deposer-une-offre
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:choixCateg, estOffre:true }
+essaba_annonce_offre_new:
+    path:     annonce/deposer-une-offre/{slugSousCateg}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:vendre }
+essaba_annonce_demande_choix_categ:
+    path:     annonce/faire-une-demande
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:choixCateg, estOffre:false }
+essaba_annonce_demande_new:
+    path:     annonce/faire-une-demande/{slugSousCateg}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:vendre }
+essaba_annonce_evenement_list:
+    path:     evenements/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:index, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_evenement_choix_type:
+    path:     evenement/publier-evenement
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:choixType }
+essaba_evenement_new:
+    path:     evenement/publier-evenement/{slugTypeEvenement}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:new }
+essaba_evenement_supprimer:
+    path:     evenement/supprimer
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:delete }
+    methods:   [POST]
+essaba_annonce_offre_modifier:
+    path:     annonce/offre/modifier/{slug}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:edit }
+essaba_annonce_demande_modifier:
+    path:     annonce/demande/modifier/{slug}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:edit }
+essaba_evenement_modifier:
+    path:     evenement/modifier/{slug}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:edit }
+essaba_annonce_modifier_image:
+    path:     annonce/modifier-image/{id}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:modifierImage }
+    methods:   [POST]
+essaba_evenement_modifier_image:
+    path:     evenement/modifier-image/{id}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:modifierImage }
+    methods:   [POST]
+essaba_evenement_supprimer_image:
+    path:     evenement/supprimer-image/{id}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:supprimerImage }
+    methods:   [POST]
+essaba_annonce_supprimer_image:
+    path:     annonce/supprimer-image/{id}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:supprimerImage }
+    methods:   [POST]
+essaba_annonce_supprimer:
+    path:     annonce/supprimer
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:delete }
+    methods:   [POST]
+essaba_annonce_voir:
+    path:     annonce/{categ}/{slug}
+    defaults: { _controller: ESSABAAnnonceBundle:Annonce:show }
+essaba_evenement_voir:
+    path:     evenement/{type}/{slug}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:show }
+essaba_evenement_par_type_evenement:
+    path:     evenements/{slugTypeEvenement}/{page}
+    defaults: { _controller: ESSABAAnnonceBundle:Evenement:listByType, page:1 }
+    requirements:
+        page:  ^[1-9]\d*$
+essaba_annonce_message_envoyer:
+    path:     message/envoyer/{slug}
+    defaults: { _controller: ESSABAAnnonceBundle:Message:envoyer }
+essaba_message_supprimer:
+    path:     message/supprimer
+    defaults: { _controller: ESSABAAnnonceBundle:Message:delete }
+    methods:   [POST]
+essaba_annonce_message_list:
+    path:     conversations/
+    defaults: { _controller: ESSABAAnnonceBundle:Conversation:index }
+essaba_annonce_message_show:
+    path:     conversation/{idConversation}-avec-{nom}
+    defaults: { _controller: ESSABAAnnonceBundle:Conversation:show }
+essaba_notification_list:
+    path:     notifications/
+    defaults: { _controller: ESSABAAnnonceBundle:Notification:index }
+essaba_notification_nbr_ajax:
+    path:     notifications/nbr
+    defaults: { _controller: ESSABAAnnonceBundle:Notification:nbrNotifAjax }
+essaba_nvo_message_ajax:
+    path:     nvomessage/{idConversation}
+    defaults: { _controller: ESSABAAnnonceBundle:Message:getNvoMessageAjax }
+essaba_save_message_ajax:
+    path:     envoyer_le_message/{idConversation}
+    defaults: { _controller: ESSABAAnnonceBundle:Message:saveAjax }
+    methods:   [POST]
+essaba_voter_bon:
+    path:     /voterBon/
+    defaults: { _controller: ESSABAAnnonceBundle:Vote:voter }
+essaba_voter_coeur:
+    path:     /coupDeCoeur/
+    defaults: { _controller: ESSABAAnnonceBundle:Vote:coupDeCoeur }
+essaba_aide:
+    path:     /aide
+    defaults: { _controller: ESSABAAnnonceBundle:Default:aide }
+essaba_mentions_legales:
+    path:     /mentions-legales
+    defaults: { _controller: ESSABAAnnonceBundle:Default:mentionsLegales }

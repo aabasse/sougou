@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="message-robot">
+	<p class="message-content message-alert">Félicitations {{user.username}}, votre compte est maintenant activé.</a>
+	</p>
+</div>
+{% endblock fos_user_content %}
+
+

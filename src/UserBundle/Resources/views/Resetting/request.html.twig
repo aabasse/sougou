@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block superTitre %}Mot de passe oublié ou perdu | {% endblock %}
+{% block titre %}Mot de passe oublié ou perdu{% endblock %}
+{% block description%}Mot de passe oublié ou perdu.{% endblock %}
+
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}

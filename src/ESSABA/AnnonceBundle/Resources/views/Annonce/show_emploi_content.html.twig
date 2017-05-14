@@ -1,0 +1,16 @@
+<p>Type d'emploi : {{annonce.type}} </p>
+{% if annonce.metier != 'Autres' %}
+<p><span class="categ-8-gris"></span> Metier : {{annonce.metier}} </p>
+{% endif %}
+{% if annonce.profil is not empty %}
+<p><span class="profil-gris"></span> Profil : {{annonce.profil}} </p>
+{% endif %}
+{% if annonce.formation is not empty %}
+<p><span class="formation-gris"></span> Formation(s) exigée(s) : {{annonce.formation}} </p>
+{% endif %}
+{% if annonce.experience is not empty %}
+<p><span class="experience-gray"></span> Expérience(s) exigée(s) : {{annonce.experience}} </p>
+{% endif %}
+{% if annonce.salaire is not empty %}
+<p><span class="euro"></span> Salaire : {{annonce.salaire}} </p>
+{% endif %}

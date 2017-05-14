@@ -1,0 +1,24 @@
+{% if nomRoute is not null %}
+    {% set urlCateg = nomRoute %}
+{% else %}
+    {% set urlCateg = 'essaba_annonce_par_sous_categ' %}
+{% endif %}
+
+<div class="contCateg" data-active-categ="{{categActive is not null ? categActive.id}}">
+
+{% for key, categ in categories %}
+    <ul>
+        <li><span class="categ-{{categ.id}}-gris"></span> {{categ.libelle|capitalize}}
+            <ul>
+                {% for key, sousCateg in categ.sousCategories %}
+                    <li>
+                        <a {% if(categActive is not null and sousCateg.id == categActive.id) %} class="active" {% endif %} id="categ-{{sousCateg.id}}" href="{{url(urlCateg, {'slugSousCateg':sousCateg.slug} )}}">
+                            {{sousCateg.libelle|capitalize}}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        <li>
+    </ul>
+{% endfor %}
+</div>

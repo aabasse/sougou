@@ -1,0 +1,41 @@
+fos_user_registration_register:
+    path:     creer-un-compte
+    defaults: { _controller: FOSUserBundle:Registration:register }
+fos_user_profile_show:
+    path:     mon-compte
+    defaults: { _controller: UserBundle:Utilisateur:show }
+fos_user_security_login:
+    path: se-connecter
+    defaults: { _controller: FOSUserBundle:Security:login }
+fos_user_security_logout:
+    path: deconnexion
+    defaults: { _controller: FOSUserBundle:Security:logout }
+fos_user_profile_reglage:
+    path:     mon-compte/reglage
+    defaults: { _controller: UserBundle:Utilisateur:reglage }
+fos_user_profile_supprimer:
+    path:     mon-compte/supprimer
+    defaults: { _controller: UserBundle:Utilisateur:supprimer }
+fos_user_profile_show_compte:
+    path:     compte/{pseudo}
+    defaults: { _controller: UserBundle:Utilisateur:compte }
+user_profile_modifier_image:
+    path:     modifier_image_profil
+    defaults: { _controller: UserBundle:Utilisateur:modifierImage }
+    methods:   [POST]
+user_profile_supprimer_image:
+    path:     supprimer_image_profil
+    defaults: { _controller: UserBundle:Utilisateur:supprimerImage }
+    methods:   [POST]
+user_les_pseudo:
+    path:     pseudos
+    defaults: { _controller: UserBundle:Utilisateur:pseudos }
+user_demander_vendu:
+    path:     demande/demander
+    defaults: { _controller: UserBundle:Utilisateur:demander }
+user_demande_repondre_vendu:
+    path:     demande/repondre-a-{demandeur}-pour-{slugAnnonce}
+    defaults: { _controller: UserBundle:Utilisateur:repondre }
+user_mes_evenements:
+    path:     mon-compte/mes-evenement
+    defaults: { _controller: UserBundle:Utilisateur:evenements }
