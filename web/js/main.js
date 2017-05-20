@@ -155,7 +155,7 @@ function afficher(leID)
 	//$(leID).css('display', 'block');
 
 	var tl = new TimelineMax();
-	tl.from($(leID), 1, {y : -10, ease: Elastic.easeOut.config(1, 0.3)}, 0);
+	//tl.from($(leID), 1, {y : -10, ease: Elastic.easeOut.config(1, 0.3)}, 0);
 	tl.to($(leID), 0.2, {autoAlpha : 1}, 0);
 	tl.to($(leID), 0, {y : 0});
 
