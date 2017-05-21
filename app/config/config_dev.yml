@@ -35,5 +35,5 @@ monolog:
     #delivery_address: ahmadi.abasse@gmail.com 
 swiftmailer:
     transport: gmail
-    username:  sougou@gmail.com
+    username:  contact@sougou.fr
     password:  mdppp

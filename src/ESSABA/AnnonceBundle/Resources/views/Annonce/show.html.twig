@@ -5,7 +5,7 @@
 {% block titre %}{{annonce.titre|capitalize}}{% endblock %}
 
 {% block description%}
-{% if annonce.estOffre %}Vend {{annonce.titre}} pour {{annonce.prix}} €{% else %}Recherche {{annonce.titre}}{% endif %}
+{% if annonce.estOffre %}Vend {{annonce.titre}} pour {{annonce.prix}}Franc CFA{% else %}Recherche {{annonce.titre}}{% endif %}
 {% endblock %}
 
 {% block facebookMeta %}
@@ -209,7 +209,7 @@
 			{% else %}
 			<p itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 				<span class="euro"></span> Prix : <span class="prix_show" itemprop="price" content="{{annonce.prix}}">{{annonce.prix}}</span>
-			    <span class="prix_show" itemprop="priceCurrency" content="EUR">€</span>
+			    <span class="prix_show" itemprop="priceCurrency" content="EUR">Franc CFA</span>
 		  	</p>
 		  	{% endif %}
 		 {% endif %}

@@ -1,5 +1,5 @@
 {% extends "ESSABAAnnonceBundle::layout.html.twig" %}
-{% block titre %}<span class="front">Annonces et événements au Mali</span>{% endblock %}
+{% block titre %}<span class="front">N°1 des sites d'annonces gratuites au Mali</span>{% endblock %}
 {% block description%}publication d'annonces sur Mali.{% endblock %}
 
 {% block stylesheets %}
@@ -19,7 +19,7 @@
 				<a for="2" href="{{url('essaba_annonce_par_commune', {'commune':'kidal'})}}">Kidal</a>
 			</div>
 			<div class="col-xs-4 col-sm-12">
-				<a for="7" href="{{url('essaba_annonce_par_commune', {'commune':'koulikora'})}}">Koulikora</a>
+				<a for="7" href="{{url('essaba_annonce_par_commune', {'commune':'koulikoro'})}}">Koulikora</a>
 				<a for="5" href="{{url('essaba_annonce_par_commune', {'commune':'segou'})}}">Segou</a>
 				<a for="6" href="{{url('essaba_annonce_par_commune', {'commune':'sikasso'})}}">Sikasso</a>
 				<a for="1" href="{{url('essaba_annonce_par_commune', {'commune':'tombouctou'})}}">Tombouctou</a>
@@ -29,7 +29,7 @@
 </div>
 <div class="col-xs-12 col-sm-6 no-padding">
 
-	<div id='cont_mapMayotte'>
+	<div id='cont_mapmali'>
 		<div id='nomCom_map' class='aCache' ><p class='text-center'></p></div>
 		
 		<div id='cont_imgMap' >
@@ -43,7 +43,7 @@
 			<img class='aOpacity' id='4' src="{{ asset('images/mali/mopti.png') }}" alt="Mopti" usemap="#map"/>
 			<img class='aOpacity' id='5' src="{{ asset('images/mali/segou.png') }}" alt="Segou" usemap="#map"/>
 			<img class='aOpacity' id='6' src="{{ asset('images/mali/sikasso.png') }}" alt="Sikasso" usemap="#map"/>
-			<img class='aOpacity' id='7' src="{{ asset('images/mali/koulikora.png') }}" alt="Koulikora" usemap="#map"/>
+			<img class='aOpacity' id='7' src="{{ asset('images/mali/koulikoro.png') }}" alt="Koulikora" usemap="#map"/>
 			<img class='aOpacity' id='8' src="{{ asset('images/mali/kayes.png') }}" alt="Kayes" usemap="#map"/>
 
 		</div>
@@ -62,12 +62,12 @@
 	<area shape="poly" coords="207,189,191,200,185,200,183,206,178,202,168,208,168,215,161,215,161,224,150,220,149,213,145,210,141,214,134,213,134,211,129,208,129,205,125,199,120,199,120,195,129,189,129,183,126,180,129,180,132,182,135,180,142,180,147,177,153,176,160,179,162,174,166,175,170,177,173,184,175,187,179,186,183,185,195,185" alt="mopti" onmouseover="afficher('4')" onmouseout="cacher('4')" href="{{url('essaba_annonce_par_commune', {'commune':'mopti'})}}" />
 	<area shape="poly" coords="107,179,122,179,127,183,127,188,120,192,119,195,119,199,121,201,125,201,127,206,127,210,132,211,134,216,142,216,144,212,147,212,149,219,149,222,141,227,144,230,145,233,135,233,134,234,131,234,130,232,127,233,123,233,123,228,118,233,115,233,113,231,108,235,104,232,98,231,95,229,95,226,100,221,100,215,97,212,99,204,102,199,107,199,104,195,108,186" alt="segou" onmouseover="afficher('5')" onmouseout="cacher('5')" href="{{url('essaba_annonce_par_commune', {'commune':'segou'})}}" />
 	<area shape="poly" coords="118,235,121,231,122,231,122,235,127,235,129,233,132,236,135,236,136,234,141,234,141,240,135,247,125,250,125,257,121,265,124,270,124,272,121,278,114,278,111,280,104,273,95,281,85,276,81,280,77,281,71,275,71,267,65,264,69,259,67,257,71,253,77,254,80,252,82,249,86,248,92,242,93,243,93,247,101,253,105,253,105,250,116,245,116,240,110,236,111,234,114,234,115,235" alt="sikasso" onmouseover="afficher('6')" onmouseout="cacher('6')" href="{{url('essaba_annonce_par_commune', {'commune':'sikasso'})}}" />
-	<area shape="poly" coords="56,178,106,178,106,185,102,194,104,198,100,198,96,207,95,212,98,215,98,221,94,225,93,228,94,231,98,233,105,234,112,240,114,241,114,244,103,250,103,251,95,246,94,240,86,246,82,247,77,252,71,252,66,257,61,253,64,246,58,237,62,233,77,229,77,226,68,216,69,211,64,208,64,203,69,205,75,205,75,199,70,196,70,192,67,190,61,187,60,183,57,181" alt="koulikora" onmouseover="afficher('7')" onmouseout="cacher('7')" href="{{url('essaba_annonce_par_commune', {'commune':'koulikora'})}}" />
+	<area shape="poly" coords="56,178,106,178,106,185,102,194,104,198,100,198,96,207,95,212,98,215,98,221,94,225,93,228,94,231,98,233,105,234,112,240,114,241,114,244,103,250,103,251,95,246,94,240,86,246,82,247,77,252,71,252,66,257,61,253,64,246,58,237,62,233,77,229,77,226,68,216,69,211,64,208,64,203,69,205,75,205,75,199,70,196,70,192,67,190,61,187,60,183,57,181" alt="koulikora" onmouseover="afficher('7')" onmouseout="cacher('7')" href="{{url('essaba_annonce_par_commune', {'commune':'koulikoro'})}}" />
 	<area shape="poly" coords="53,179,49,183,31,184,31,187,26,187,19,180,10,180,8,181,8,184,10,185,9,194,2,196,0,198,5,200,5,203,3,217,6,223,13,223,16,227,16,231,16,236,17,239,13,243,16,247,19,247,24,244,26,244,26,248,32,248,35,243,47,247,52,243,52,236,57,236,67,229,75,228,66,216,66,210,62,209,61,206,63,202,64,201,69,203,72,204,74,201,72,199,69,198,68,192,61,190,59,189,58,183" alt="kayes" onmouseover="afficher('8')" onmouseout="cacher('8')" href="{{url('essaba_annonce_par_commune', {'commune':'kayes'})}}" />
 	</map>
 
 	<p id="descriptZBZ">
-		text presentation
+		Vendez, achetez, louez et proposez vos services sur le plus grand site de petites annonces gratuites au Mali : immobilier, voiture, moto, informatique, mode etc..
 	</p>
 </div>
 <div class="col-sm-3 cadre-ombre">

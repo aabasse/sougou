@@ -149,7 +149,7 @@ a.active, .contCateg .active{color: #0b9043;}
 .shutdown-white{background-image: url('../images/icons/shutdown-white.png');}
 .siren-white{background-image: url('../images/icons/siren-white.png');}
 .sorting-white{background-image: url('../images/icons/sorting-white.png');}
-.mayotte-white{background-image: url('../images/icons/mayotte-white.png');}
+.mali-white{background-image: url('../images/icons/mali-white.png');}
 .even-white{background-image: url('../images/icons/even-white.png');}
 .even-add-white{background-image: url('../images/icons/even-add-white.png');}
 .help-white{background-image: url('../images/icons/help-white.png');}
@@ -391,6 +391,11 @@ nav
 {
 	display: none;
 }
+/*Centrer le logo*/
+img.logo1
+{
+margin-left:280px;
+}
 
 .typeCateg
 {
@@ -517,7 +522,7 @@ footer img
 }
 
 /* map */
-#cont_mapMayotte{
+#cont_mapmali{
 	position: relative;
 	text-align: center;
 	/* width: 100%; */
@@ -525,7 +530,7 @@ footer img
 	padding-top: 20px;
 }
 
-#cont_mapMayotte_mobile{
+#cont_mapmali_mobile{
 	position: relative;
 	text-align: center;
 	width: 100%;
@@ -1228,10 +1233,6 @@ color: #0b9043;
     height: 400px;
     overflow: hidden;
 }
-
-    
-
-
 
 
 #dialog-vendu

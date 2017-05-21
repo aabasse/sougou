@@ -2,22 +2,22 @@ essaba_annonce_homepage:
     path:     /
     defaults: { _controller: ESSABAAnnonceBundle:Default:index }
 essaba_annonces:
-    path:     les-petites-annonces-de-mayotte/{page}
+    path:     les-petites-annonces-de-mali/{page}
     defaults: { _controller: ESSABAAnnonceBundle:Annonce:index, page:1 }
     requirements:
         page:  ^[1-9]\d*$
 essaba_annonces_list_offre:
-    path:     les-petites-annonces-de-mayotte/consulter-les-offres/{page}
+    path:     les-petites-annonces-de-mali/consulter-les-offres/{page}
     defaults: { _controller: ESSABAAnnonceBundle:Annonce:index, page:1, type:'offre' }
     requirements:
         page:  ^[1-9]\d*$
 essaba_annonces_list_demande:
-    path:     les-petites-annonces-de-mayotte/consulter-les-demandes/{page}
+    path:     les-petites-annonces-de-mali/consulter-les-demandes/{page}
     defaults: { _controller: ESSABAAnnonceBundle:Annonce:index, page:1, type:'demande' }
     requirements:
         page:  ^[1-9]\d*$
 essaba_annonce_recherche:
-    path:     rechercher-une-annonces-sur-mayotte/{page}
+    path:     rechercher-une-annonces-sur-mali/{page}
     defaults: { _controller: ESSABAAnnonceBundle:Default:recherche, page:1 }
     requirements:
         page:  ^[1-9]\d*$
@@ -27,7 +27,7 @@ essaba_annonce_recherche_term:
     requirements:
         page:  ^[1-9]\d*$
 essaba_annonce_par_commune:
-    path:     annonces/mayotte/{commune}/{page}
+    path:     annonces/mali/{commune}/{page}
     defaults: { _controller: ESSABAAnnonceBundle:Default:recherche, page:1 }
     requirements:
         page:  ^[1-9]\d*$

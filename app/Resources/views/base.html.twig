@@ -7,7 +7,7 @@
         <title>{% block superTitre %}{% endblock %}Sougou</title>
         <meta name="description" content="{% block description %}{% endblock %}" />
         <meta name="theme-color" content="#27ae60">
-        <link rel="icon" type="image/x-icon" href="/web{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="/web{{ asset('logo-favicon.ico') }}" />
         <link rel="search" type="application/opensearchdescription+xml" title="Sougou" href="{{asset('opensearch.xml')}}" />
         <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
@@ -33,7 +33,8 @@
                     {#<a href="{{path('essaba_annonce_homepage')}}"><img width="32" height="auto" alt="logo Sougou blanc" id="logo-zbz" src="{{asset('images/logo_Sougou_blanc.png')}}"></a>#}
                 </div>
                 <div class="col-xs-8">
-                    <h1 class="text-center">Sougou</h1>
+                    <!-- <h1 class="text-center">Sougou</h1> -->
+                    <img class="logo1" height="auto" width="auto" alt="logo sougou" src="{{asset('images/logo1.png')}}">
                     <div class="text-center"><i>Une autre façon de faire le commerce.</i></div> 
                 </div>
                 <div class="col-xs-2">
@@ -74,7 +75,7 @@
             <div class="col-sx-12 col-sm-4">
                 <a href="{{url('essaba_mentions_legales')}}">Mentions légales</a>
                 <br/>
-                <a href="mailto:Sougou@gmail.com">Contact : Sougou@gmail.com</a>
+                <a href="mailto:contact@sougou.fr">Contact : contact@sougou.fr</a>
             </div>
             <div class="col-xs-6 col-sm-4 sougou">
                 {#<img height="30px" width="auto" alt="logo Sougou blanc" src="{{asset('images/logo_Sougou_blanc.png')}}">#}
