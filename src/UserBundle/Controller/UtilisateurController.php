@@ -81,13 +81,6 @@ class UtilisateurController extends Controller
         ));
     }
 
-    public function evenementsAction(){
-        //$evenements = $this->getDoctrine()->getRepository("ESSABAAnnonceBundle:Evenement")->getDeUtilisateur($this->getUser());
-        $evenements = $this->getDoctrine()->getRepository("ESSABAAnnonceBundle:Evenement")->findByUtilisateur($this->getUser());
-        return $this->render('UserBundle:Utilisateur:evenements.html.twig', array('evenements'  => $evenements
-        ));
-    }
-
     public function supprimerAction(Request $request){
 
         $form = $this->createFormBuilder()
@@ -108,11 +101,6 @@ class UtilisateurController extends Controller
                $em->remove($a);
             }
             $em->remove($user);
-            // suppression de ses événements
-            $evenements = $this->getDoctrine()->getRepository("ESSABAAnnonceBundle:Evenement")->findByUtilisateur($this->getUser());
-            foreach ($evenements as $e) {
-               $em->remove($e);
-            }
 
             $em->flush();
 
