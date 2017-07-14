@@ -109,7 +109,7 @@ class DefaultController extends Controller
                 'required' => false,
                 'label' => 'Catégorie'
                 ))
-            ->add('commune', EntityType::class, array('class' => 'ESSABAAnnonceBundle:Commune', 'choice_label' => 'nom', 'required' => false))
+            ->add('commune', EntityType::class, array('label'=>'Région', 'class' => 'ESSABAAnnonceBundle:Commune', 'choice_label' => 'nom', 'required' => false))
             ->add('min', MoneyType::class, array('scale' => 2, 'required' => false, 'attr'=> array('placeholder' => 'min', 'pattern' => '.*(^\d+([,|.]\d{1,2})?$).*') ))
             ->add('max', MoneyType::class, array('scale' => 2, 'required' => false, 'attr'=> array('placeholder' => 'max', 'pattern' => '.*(^\d+([,|.]\d{1,2})?$).*') ));
             $className = $gestionAnnonce->getClassNameAnnonce($idCateg);

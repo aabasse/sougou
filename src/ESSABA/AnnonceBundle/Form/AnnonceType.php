@@ -95,7 +95,7 @@ class AnnonceType extends AbstractType
 
             ;
         }
-            $builder->add('commune')
+            $builder->add('commune', null, array('label'=>'Région'))
             /*->add('sousCategorie', EntityType::class, array('required' => false, 'class'=>'ESSABAAnnonceBundle:SousCategorie',
                 'group_by' => function($val, $key, $index) {
                     return $val->getCategorie();

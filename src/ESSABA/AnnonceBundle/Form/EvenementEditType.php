@@ -30,7 +30,7 @@ class EvenementEditType extends AbstractType
             ->add('DateLieuFormat', null, array('label'=>'Date'))
             ->add('description')
             ->add('adresse')
-            ->add('commune')
+            ->add('commune', null, array('label'=>'Région'))
         ;
     }
     

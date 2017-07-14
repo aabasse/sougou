@@ -69,7 +69,7 @@ class AnnonceEditType extends AbstractType
                 ))
                 ;
             }
-            $builder->add('commune');
+            $builder->add('commune', null, array('label'=>'Région'));
 
             
             /*

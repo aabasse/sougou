@@ -46,7 +46,7 @@ class EvenementType extends AbstractType
             ->add('description')
             ->add('adresse')
             ->add('photo', FileType::class, Array('label' => 'Photo', 'required' => false ))
-            ->add('commune')
+            ->add('commune', null, array('label'=>'Région'))
         ;
     }
     
