@@ -27,7 +27,7 @@ class AppExtension extends \Twig_Extension
 
     public function afficherCommune($var) {
         $var = strip_tags($var);
-        $textAvant = "commune ";
+        $textAvant = "région ";
         switch ($var[0]) {
             case $var[0] == 'a' || $var[0] == 'o':
                  $textAvant .='d\'';
