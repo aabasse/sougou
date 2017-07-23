@@ -49,7 +49,7 @@ class LocationEditType extends AnnonceEditType
                 $builder
                 ->remove('prix')
                 ->remove('autreMoyen')
-                ->add('prix', MoneyType::class, array('required' => false, 'scale' => 2, 'label' => 'Loyer', 'attr'=> array('pattern' => '.*(^\d+([,|.]\d{1,2})?$).*') ))
+                ->add('prix', MoneyType::class, array('currency'=>'MLF', 'required' => false, 'scale' => 2, 'label' => 'Loyer', 'attr'=> array('pattern' => '.*(^\d+([,|.]\d{1,2})?$).*') ))
 
                 ->add('autreMoyen', ChoiceType::class, array('required' => false, 'label'=>'Ou pour le loyer',
                 'choices' => Annonce::getListAutreMoyens(),

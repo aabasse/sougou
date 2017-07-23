@@ -60,7 +60,7 @@ class AnnonceEditType extends AbstractType
             if($this->estOffre)
             {
                 $builder
-                ->add('prix', MoneyType::class, array('scale' => 2, 'required' => false, 'attr'=> array('pattern' => '.*(^\d+([,|.]\d{1,2})?$).*') ))
+                ->add('prix', MoneyType::class, array('currency'=>'MLF', 'scale' => 2, 'required' => false, 'attr'=> array('pattern' => '.*(^\d+([,|.]\d{1,2})?$).*') ))
                 ->add('autreMoyen', ChoiceType::class, array('required' => false, 'label'=>'Ou pour le prix',
                 'choices' => Annonce::getListAutreMoyens(),
                 'choice_label' => function ($value, $key, $index) {
